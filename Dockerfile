@@ -1,7 +1,7 @@
 FROM dart:stable AS build
 
 
-RUN apt-get update && apt-get -y install sudo wget git
+RUN apt-get update && apt-get -y install sudo wget git gnupg
 
 ARG FLUTTERVERSION
 
