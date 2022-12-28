@@ -10,8 +10,11 @@ jobs:
           name: "Build image"
           command: "docker build --build-arg FLUTTERVERSION=3.0.5 -t hoffmannkrzysztof/fvm-flutter:3.0.5 -t hoffmannkrzysztof/fvm-flutter:latest ."
       - run:
+          name: "Docker login"
+          command: 'echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin'
+      - run:
           name: "Push image"
-          command: "docker push -a"
+          command: "docker image push --all-tags hoffmannkrzysztof/fvm-flutter"
 workflows:
   docker-image-workflow:
     jobs:
